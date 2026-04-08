@@ -14,7 +14,7 @@ const db = mysql.createPool({
 });
 
 // ── CATEGORIAS ─────────────────────────────────────────
-app.get("/categorias", async (_, res) => {
+app.get("/categorias", async (req, res) => {
   const [rows] = await db.query("SELECT * FROM categorias");
   res.json(rows);
 });
@@ -43,7 +43,7 @@ app.delete("/categorias/:id", async (req, res) => {
 });
 
 // ── JOGOS ──────────────────────────────────────────────
-app.get("/jogos", async (_, res) => {
+app.get("/jogos", async (req, res) => {
   const [rows] = await db.query(`
     SELECT jogos.*, categorias.nome AS categoria
     FROM jogos
